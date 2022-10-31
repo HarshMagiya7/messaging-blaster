@@ -1,0 +1,11 @@
+:root {
+    --bg-color: #ffffff;
+    --bg-gradiant: linear-gradient(90deg,rgba(56,189,248,0),#0ea5e90f 32.29%,#6c227d00 67.19%,rgb(236 72 153 / 4%));
+}
+
+.page-container {
+    background-image:var(--bg-gradiant);
+}
+.page-head {
+    background-image: var(--bg-gradiant);
+}

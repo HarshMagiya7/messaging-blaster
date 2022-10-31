@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:customer",
+ "creation": "2022-09-08 18:25:22.809986",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "customer_id",
+  "message",
+  "section_break_4",
+  "sms_message"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "unique": 1
+  },
+  {
+   "fieldname": "customer_id",
+   "fieldtype": "Data",
+   "label": "Customer id"
+  },
+  {
+   "columns": 1,
+   "fieldname": "message",
+   "fieldtype": "Table",
+   "label": "Whatsapp Messages",
+   "options": "Whatsapp Messages",
+   "width": "2"
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sms_message",
+   "fieldtype": "Table",
+   "label": "SMS Messages",
+   "options": "SMS Messages"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-10-21 14:48:27.444730",
+ "modified_by": "Administrator",
+ "module": "Contact Grouping",
+ "name": "Sync contact",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

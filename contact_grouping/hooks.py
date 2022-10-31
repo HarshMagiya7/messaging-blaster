@@ -13,7 +13,7 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/contact_grouping/css/contact_grouping.css"
+app_include_css = "/assets/contact_grouping/css/novacept1.css"
 # app_include_js = "/assets/contact_grouping/js/contact_grouping.js"
 
 # include js, css files in header of web template

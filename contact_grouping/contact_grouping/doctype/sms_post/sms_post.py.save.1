@@ -1,0 +1,49 @@
+# Copyright (c) 2022, Devershi and contributors
+# For license information, please see license.txt
+
+# import frappe
+
+from frappe.model.document import Document
+import frappe
+import requests
+import json
+
+
+class SMSPost(Document):
+	def validate(self):
+		if self.scheduled_time:
+			current_time = frappe.utils.now_datetime()
+			scheduled_time = frappe.utils.get_datetime(self.scheduled_time)
+			if scheduled_time < current_time:
+				frappe.throw(("Scheduled Time must be future time."))
+		self.post_status = 'Scheduled'
+	@frappe.whitelist()
+	def message_post(self):
+
+		# MessageBird Access Token
+		messagebird_doc = frappe.get_single('Messagebird Setting')
+		messagebird_token = messagebird_doc.get_password('access_token')
+
+		# Recipents
+		contact_table = frappe.get_doc('Contact Group',self.msg_to)
+		for entry in contact_table.contact:
+			number = frappe.get_value('Customer',((frappe.get_doc('Contact Group Member',entry.get('contacts'))).contact),'mobile_no')
+			print(number)
+			response = self.post(messagebird_token,self.sms_text,number)
+		frappe.db.set_value("SMS Post",self.name,"post_status",'Posted')
+		frappe.db.commit()
+		print('hi')
+	def post(self,token,text,number):
+		url = "https://rest.messagebird.com/messages"
+		headers = {
+			'Authorization': f'AccessKey {token}',
+			'Content-Type': 'application/json'
+			}
+		payload=json.dumps({"recipients":number,"originator":"919665065389","body":text})
+		print(f'\n\n{payload}\n\n')
+		response = requests.request("POST", url, headers=headers, data=payload)
+		print(response.text)
+		return response.text
+	def validate_text(self):
+		text = self.sms_text
+		doc = frappe.get_doc(
