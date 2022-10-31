@@ -106,23 +106,23 @@ app_include_css = "/assets/contact_grouping/css/novacept1.css"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
+scheduler_events = {
 #	"all": [
 #		"contact_grouping.tasks.all"
 #	],
 #	"daily": [
 #		"contact_grouping.tasks.daily"
 #	],
-#	"hourly": [
-#		"contact_grouping.tasks.hourly"
-#	],
+	"hourly": [
+		"contact_grouping.contact_grouping.doctype.sync_contact.sync_contact.sync_all_contact"
+	]
 #	"weekly": [
 #		"contact_grouping.tasks.weekly"
 #	]
 #	"monthly": [
 #		"contact_grouping.tasks.monthly"
 #	]
-# }
+}
 
 # Testing
 # -------
