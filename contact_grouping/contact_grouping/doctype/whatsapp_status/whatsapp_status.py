@@ -13,7 +13,7 @@ class WhatsappStatus(Document):
 		rejected = len(frappe.db.get_values("Whatsapp Messages",{'campaign':self.name,'status':'REJECTED'}, 'name', as_dict=1))
 		all = len(frappe.db.get_values("Whatsapp Messages",{'campaign':self.name}, 'name', as_dict=1))
 		accepted = len(frappe.db.get_values("Whatsapp Messages",{'campaign':self.name,'status':'ACCEPTED'}, 'name', as_dict=1))
-		transmitted = len(frappe.db.get_values("Whatsapp Messages",{'campaign':self.name,'status':'TRANSMITTED}, 'name', as_dict=1))
+		transmitted = len(frappe.db.get_values("Whatsapp Messages",{'campaign':self.name,'status':'TRANSMITTED'}, 'name', as_dict=1))
 		pending = len(frappe.db.get_values("Whatsapp Messages",{'campaign':self.name,'status':'PENDING'}, 'name', as_dict=1))
 
 		doc = frappe.get_doc('Whatsapp Status',self.name)
